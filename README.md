@@ -104,7 +104,7 @@ Resumidamente, ao usar o Page Objects, estamos construindo uma classe para cada 
 
 Vamos usar o exemplo de uma automação de Login de uma página qualquer usando o framework Cypress.
 
-1. É preciso criar o arquivo **Login.feature**, onde ficarão salvos nossos cenários em BDD:
+1. É preciso criar o arquivo **Login.feature**, onde ficarão salvos nossos cenários em Gherkin:
 
 ```
 Scenario: Login do site ABC.
@@ -195,14 +195,14 @@ Utilizando o padrão Page Objects para o trabalho de automação dos testes, exi
 
 Abaixo segue o modelo de estrutura que usamos em nosso projeto:
 
-- **e2e/spec**: Nessa pasta guardaremos nossas specs como features, de acordo com a metodologia BDD.  Fica definida as seguintes convenções:
+- **e2e/spec**: Nessa pasta guardaremos nossas specs como features, de acordo com a metodologia Gherkin.  Fica definida as seguintes convenções:
     * Dentro da pasta specs constará novas pastas com o nome do épico ou da área associada.
     * O nome das pasta deve estar sempre com letras mínusculas e/ou com uso do *underline* para cada palavra.
     * Dentro da pasta do épico deverão existir as features associadas. Sendo que o arquivo .feature deve ser nomeado como ``` nome da funcionalidade ```
   
 <p>
 
-- **e2e/step_definitions**: Nessa pasta guardaremos os métodos steps associados ao BDD. Fica definida as seguintes convenções:
+- **e2e/step_definitions**: Nessa pasta guardaremos os métodos steps associados ao Gherkin. Fica definida as seguintes convenções:
 
   * Dentro da pasta step_definitions constará novas pastas com o nome do épico ou da área associada, além da pasta common, com o objetivo de guardar as steps comuns.
   * O nome das pasta deve estar sempre com letras mínusculas e/ou com uso do *underline* para cada palavra.
