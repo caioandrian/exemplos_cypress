@@ -42,9 +42,9 @@ O Visual Studio Code abrirá automaticamente e pronto.
 
 Após as instalações do NodeJs e do VScode, vamos baixar o projeto do git.
 
-**1**. No caminho <xxxxx>, clicar no repositório do projeto;
+**1**. No caminho <https://github.com/caioandrian/exemplos_cypress>;
 
-**2**. Clicar no botão de _Clone_ e copiar a url informada;
+**2**. Clicar no botão de Code, em Local e HTTPS, copiar a url informada;
 
 **3**. Na pasta de sua preferência, abrir o Prompt de Comando e executar o comando ```git clone + url copiada```;
 
