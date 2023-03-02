@@ -107,10 +107,10 @@ Vamos usar o exemplo de uma automação de Login de uma página qualquer usando 
 1. É preciso criar o arquivo **Login.feature**, onde ficarão salvos nossos cenários em Gherkin:
 
 ```
-Scenario: Login do site ABC.
-  Given acesso o site ABC
-  When acesso a página de login
-  Then devo visualizar botão de Esqueci minha senha
+Cenário: Criar conta para movimentação
+  Quando criar uma conta com o nome "Carteira"
+  Então deverá apresentar a mensagem "Conta inserida com sucesso!" no site de exemplo
+  E deverá deslogar da conta no site de exemplo
 ```
 
 2. Agora é preciso criar o arquivo **LoginSteps.js** Ele é necessário para **mapear os passos do nosso teste**:
@@ -118,15 +118,19 @@ Scenario: Login do site ABC.
 import {Given, When, Then, Before, And} from 'cypress-cucumber-preprocessor/steps'
 import LoginPage from '../pageobjects/LoginPage'
 
-  Given("acesso o site ABC", () => {
-    LoginPage.acessar_site();
+  When(`criar uma conta com o nome {string}`, (nome_conta) => {
+    Header_Exemplo.acessar_menu_conta();
+    Conta_Exemplo.inserir_conta(nome_conta)
   })
-  When("acesso a pagina de login", () => {
-    LoginPage.clicar_botao_login();
+
+  Then(`deverá apresentar a mensagem {string} no site de exemplo`, (msg) => {
+    Header_Exemplo.valida_mensagem_toast(msg)
   })
-  Then("devo visualizar botão de Esqueci minha senha", () => {
-    LoginPage.valida_botao_recuperar_senha_visivel();
-  }) 
+
+  Then(`deverá deslogar da conta no site de exemplo`, () => {
+    Header_Exemplo.deslogar()
+    Header_Exemplo.valida_mensagem_toast('Até Logo!')
+  })
 ```
 
 3. Depois é necessário **mapear os elementos da página** usada no arquivo **LoginElements.js** e disponibilizá-lo para importação em outros arquivos:
@@ -146,32 +150,44 @@ export const ELEMENTS = {
 
 ```
 import Base from '../../base_page'
-import mockExemploFinanceiro from '../../../../cypress/support/mockExemploFinanceiro'
 const el = require('./elements').ELEMENTS;
 
-export class Login_Exemplo extends Base {
+export class Conta_Exemplo extends Base{
+  static inserir_conta(nomeConta){
+      if(Cypress.env('MockRequest')){
+          cy.intercept('POST', Cypress.env("exemplo").backend + '/contas',{
+              statusCode: 201,
+              fixture: 'exemplo_financeiro/mock/post_response_conta_valida.json'
+          })
+          .as('postConta')
 
-    static visitar_pagina(){
-        super.visit(Cypress.env("exemplo").frontend)
-    }
+          cy.intercept('GET', Cypress.env("exemplo").backend + '/contas',{
+              fixture: 'exemplo_financeiro/mock/get_response_contas_atualizadas.json'
+          })
+          .as('contas Atualizadas')
+      }
+      
+      super.typeElement(el.CONTAS.NOME,nomeConta)
+      super.clickElement(el.CONTAS.BTN_SALVAR)
+  }
 
-    static fazer_login(){
-        if(Cypress.env('MockRequest')){
-            mockExemploFinanceiro()
-            super.typeElement(el.LOGIN.USER, "usuariofalso")
-            super.typeElement(el.LOGIN.PASSWORD, "qualquersenha")
-            super.clickElement(el.LOGIN.BTN_LOGIN)
-        }else{
-            var user = Cypress.env("users").user_exemplo;
-            super.typeElement(el.LOGIN.USER, user.email)
-            super.typeElement(el.LOGIN.PASSWORD, user.senha)
-            super.clickElement(el.LOGIN.BTN_LOGIN)
-        }
-    }
-    
+  static inserir_conta_duplicada(nomeConta){
+      if(Cypress.env('MockRequest')){
+          cy.intercept('POST','/contas',{
+              statusCode: 400,
+              body: {error: "Já existe uma conta com esse nome!"}
+          }).as('postContaDuplicada')
+      }
+      
+      super.typeElement(el.CONTAS.NOME,nomeConta)
+      super.clickElement(el.CONTAS.BTN_SALVAR)
+  }
+
+  static editar_uma_conta(nomeConta){
+      super.getElementByXPath(el.CONTAS.FN_XP_BTN_ALTERAR(nomeConta)).click()
+      super.clickElement(el.CONTAS.BTN_SALVAR)
+  }
 }
-
-export default LoginPage;
 
 ```
 
