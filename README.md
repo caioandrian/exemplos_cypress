@@ -173,6 +173,8 @@ export class Login_Exemplo extends Base {
 
 export default LoginPage;
 
+```
+
 Pronto!
 
 Esses são os passos necessários para usar o padrão Page Objects no nosso projeto!
