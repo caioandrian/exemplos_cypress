@@ -1,0 +1,15 @@
+{
+    "id":999,
+    "descricao":"Transação de Exemplo",
+    "envolvido":"AAA",
+    "observacao":null,
+    "tipo":"REC",
+    "data_transacao":"2020-08-15T03:00:00.000Z",
+    "data_pagamento":"2020-08-15T03:00:00.000Z",
+    "valor":"900.50",
+    "status":true,
+    "conta_id":1,
+    "usuario_id":10899,
+    "transferencia_id":null,
+    "parcelamento_id":null
+}
