@@ -17,13 +17,6 @@ export class Conta_Exemplo extends Base{
             })
             .as('contas Atualizadas')
         }
-
-        if(Cypress.env('MockRequest')){
-            cy.intercept('POST','/contas',{
-                statusCode: 400,
-                body: {error: "Já existe uma conta com esse nome!"}
-            }).as('postContaDuplicada')
-        }
         
         super.typeElement(el.CONTAS.NOME,nomeConta)
         super.clickElement(el.CONTAS.BTN_SALVAR)

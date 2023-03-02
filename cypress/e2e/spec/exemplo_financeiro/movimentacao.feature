@@ -22,7 +22,7 @@ Funcionalidade: Movimentação
 
     @editar_transacao
     Cenario: Editar uma transação
-        Dado que esteja na página de extrato
+        Dado que esteja na página de extrato com uma conta de nome "Conta para saldo" e "534,00"
         Quando editar a transação com a descrição "Movimentacao 1, calculo saldo" referente a conta "Conta para saldo"
         Então deverá apresentar a mensagem "Movimentação alterada com sucesso!" no site de exemplo
         E apresentar o saldo atualizado da conta "Conta para saldo" com valor de "4.034,00"
@@ -30,7 +30,7 @@ Funcionalidade: Movimentação
 
     @deletar_transacao
     Cenario: Excluir uma nova transação
-        Dado que esteja na página de extrato
+        Dado que esteja na página de extrato com uma conta de nome "Conta para saldo" e "534,00"
         Quando remover a transação com a descrição "Movimentacao para exclusao"
         Então deverá apresentar a mensagem "Movimentação removida com sucesso!" no site de exemplo
         E deverá apresentar um total ">=" a 5 transações na página de extratos

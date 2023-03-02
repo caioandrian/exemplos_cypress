@@ -5,8 +5,8 @@ import {Movimentacao_Exemplo} from '../../../pages/exemplo_financeiro/movimentac
 import {Extratos_Exemplo} from '../../../pages/exemplo_financeiro/extratos'
 import {Home_Exemplo} from '../../../pages/exemplo_financeiro/home'
 
-Given(`que esteja na página de extrato`, () => {
-    Home_Exemplo.valida_saldo_conta('Conta para saldo', '534,00')
+Given(`que esteja na página de extrato com uma conta de nome {string} e {string}`, (nome, valor) => {
+    Home_Exemplo.valida_saldo_conta(nome, valor)
     Header_Exemplo.acessar_menu_extratos();
 })
 

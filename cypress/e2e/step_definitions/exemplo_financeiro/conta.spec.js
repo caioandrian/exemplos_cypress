@@ -12,12 +12,12 @@ Given(`que tenha uma conta cadastrada com o nome {string}`, (nome_conta) => {
     }
 })
 
-When(`criar uma conta com um nome válido`, () => {
+When(`criar uma conta com o nome {string}`, (nome_conta) => {
     Header_Exemplo.acessar_menu_conta();
-    Conta_Exemplo.inserir_conta('Carteira')
+    Conta_Exemplo.inserir_conta(nome_conta)
 })
 
-When(`criar uma conta com um nome que já existe no sistema`, () => {
+When(`tentar criar novamente uma conta com o nome {string}`, (nome_conta) => {
     Header_Exemplo.acessar_menu_conta();
-    Conta_Exemplo.inserir_conta_duplicada('Carteira')
+    Conta_Exemplo.inserir_conta_duplicada(nome_conta)
 })

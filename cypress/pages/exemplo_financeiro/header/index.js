@@ -34,7 +34,7 @@ export class Header_Exemplo extends Base{
     }
 
     static valida_mensagem_toast(texto){
-        super.explicitWait(3000)
+        super.explicitWait(4000)
         super.validateElementTextByIndex(el.MESSAGE, 0, texto)
     }
 
