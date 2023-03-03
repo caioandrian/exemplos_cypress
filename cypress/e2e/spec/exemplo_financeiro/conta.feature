@@ -6,7 +6,7 @@ Funcionalidade: Conta
     Quero ter uma ou mais contas para movimentação
 
     Contexto:
-        Dado que esteja logado com uma conta ativa
+        Dado que esteja logado na conta do "Caio"
         E que esteja com o banco de dados resetados
 
     @criar_conta

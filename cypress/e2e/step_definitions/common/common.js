@@ -3,9 +3,9 @@ import {Given, When, Then, After, Before, And} from 'cypress-cucumber-preprocess
 import {Header_Exemplo} from '../../../pages/exemplo_financeiro/header'
 import {Login_Exemplo} from '../../../pages/exemplo_financeiro/login'
 
-Given('que esteja logado com uma conta ativa', () => {
+Given('que esteja logado na conta do {string}', (nome) => {
     Login_Exemplo.visitar_pagina()
-    Login_Exemplo.fazer_login();
+    Login_Exemplo.fazer_login(nome);
 })
 
 Given(`que esteja com o banco de dados resetados`, () => {

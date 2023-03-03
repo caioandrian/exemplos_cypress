@@ -6,7 +6,7 @@ Funcionalidade: Movimentação
     Quero realizar uma ou mais transações usando uma conta
 
     Contexto:
-        Dado que esteja logado com uma conta ativa
+        Dado que esteja logado na conta do "Caio"
         E que esteja com o banco de dados resetados
 
     @criar_transacao

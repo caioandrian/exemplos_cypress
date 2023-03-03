@@ -1,6 +1,6 @@
 import Base from '../../base_page'
-import {Header_Exemplo} from '../../../pages/exemplo_financeiro/header'
-import {Conta_Exemplo} from '../../../pages/exemplo_financeiro/contas'
+import {Header_Exemplo} from '../header/index'
+import {Conta_Exemplo} from '../contas/index'
 
 const el = require('./elements').ELEMENTS;
 

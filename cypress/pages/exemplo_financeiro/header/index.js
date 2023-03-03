@@ -34,8 +34,10 @@ export class Header_Exemplo extends Base{
     }
 
     static valida_mensagem_toast(texto){
-        super.explicitWait(4000)
+        //super.explicitWait(4000)
+        super.validateTextExistOnPage(texto)
         super.validateElementTextByIndex(el.MESSAGE, 0, texto)
+        super.clickElementByIndex(el.BTN_CLOSE_MESSAGE, 0)
     }
 
     static reset_app(){
